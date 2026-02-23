@@ -1,4 +1,6 @@
+# =========================
 # Logs
+# =========================
 logs
 *.log
 npm-debug.log*
@@ -7,12 +9,39 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# =========================
+# Dependencies
+# =========================
 node_modules
+
+# =========================
+# Build outputs
+# =========================
 dist
 dist-ssr
+build
+coverage
 *.local
 
+# =========================
+# Prisma (Prisma v7)
+# =========================
+# Prisma generated client (output custom)
+src/generated/prisma
+
+# Prisma Studio temporary files
+.prisma
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
 # Editor directories and files
+# =========================
 .vscode/*
 !.vscode/extensions.json
 .idea
