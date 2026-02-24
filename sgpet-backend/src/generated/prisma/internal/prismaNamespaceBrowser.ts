@@ -51,7 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-
+  Usuario: 'Usuario',
+  Categoria: 'Categoria',
+  Equipo: 'Equipo',
+  Prestamo: 'Prestamo',
+  Devolucion: 'Devolucion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,4 +72,99 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const UsuarioScalarFieldEnum = {
+  id: 'id',
+  cedula: 'cedula',
+  nombres: 'nombres',
+  apellidos: 'apellidos',
+  email: 'email',
+  password: 'password',
+  rol: 'rol',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
+export const CategoriaScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre'
+} as const
+
+export type CategoriaScalarFieldEnum = (typeof CategoriaScalarFieldEnum)[keyof typeof CategoriaScalarFieldEnum]
+
+
+export const EquipoScalarFieldEnum = {
+  id: 'id',
+  codigo: 'codigo',
+  nombre: 'nombre',
+  descripcion: 'descripcion',
+  marca: 'marca',
+  modelo: 'modelo',
+  numeroSerie: 'numeroSerie',
+  estado: 'estado',
+  disponible: 'disponible',
+  categoriaId: 'categoriaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EquipoScalarFieldEnum = (typeof EquipoScalarFieldEnum)[keyof typeof EquipoScalarFieldEnum]
+
+
+export const PrestamoScalarFieldEnum = {
+  id: 'id',
+  estado: 'estado',
+  fechaSolicitud: 'fechaSolicitud',
+  fechaAprobacion: 'fechaAprobacion',
+  fechaEntrega: 'fechaEntrega',
+  fechaDevolucion: 'fechaDevolucion',
+  observacion: 'observacion',
+  usuarioId: 'usuarioId',
+  equipoId: 'equipoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrestamoScalarFieldEnum = (typeof PrestamoScalarFieldEnum)[keyof typeof PrestamoScalarFieldEnum]
+
+
+export const DevolucionScalarFieldEnum = {
+  id: 'id',
+  fecha: 'fecha',
+  observacion: 'observacion',
+  estadoEquipoAlDevolver: 'estadoEquipoAlDevolver',
+  prestamoId: 'prestamoId',
+  createdAt: 'createdAt'
+} as const
+
+export type DevolucionScalarFieldEnum = (typeof DevolucionScalarFieldEnum)[keyof typeof DevolucionScalarFieldEnum]
+
+
+export const SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+} as const
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

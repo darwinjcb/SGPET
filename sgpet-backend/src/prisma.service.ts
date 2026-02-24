@@ -1,5 +1,5 @@
-// sgpet-backend/src/servicio-prisma.service.ts:
-// sgpet-backend/src/servicio-prisma.service.ts
+/* Servicio de Prisma para NestJS */
+// sgpet-backend/src/prisma.service.ts:
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { PrismaClient } from './generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
@@ -10,9 +10,13 @@ export class ServicioPrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
-    const adapter = new PrismaPg({
-      connectionString: process.env.DATABASE_URL,
-    });
+    const connectionString = process.env.DATABASE_URL;
+
+    if (!connectionString) {
+      throw new Error('DATABASE_URL no está definida. Revisa tu archivo .env');
+    }
+
+    const adapter = new PrismaPg({ connectionString });
 
     super({ adapter });
   }
