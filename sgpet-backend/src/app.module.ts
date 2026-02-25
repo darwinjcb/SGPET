@@ -10,6 +10,7 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { EquiposModule } from './equipos/equipos.module';
 import { PrestamosModule } from './prestamos/prestamos.module';
 import { DevolucionesModule } from './devoluciones/devoluciones.module';
+import { ReportesModule } from './reportes/reportes.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { DevolucionesModule } from './devoluciones/devoluciones.module';
     EquiposModule,
     PrestamosModule,
     DevolucionesModule,
+    ReportesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
