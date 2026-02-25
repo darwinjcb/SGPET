@@ -1,15 +1,5 @@
 // sgpet-backend/src/categorias/categorias.controller.ts:
-import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    Param,
-    ParseIntPipe,
-    Patch,
-    Post,
-    UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, } from '@nestjs/common';
 import { CategoriasService } from './categorias.service';
 import { CreateCategoriaDto } from './create-categoria.dto';
 import { UpdateCategoriaDto } from './update-categoria.dto';
