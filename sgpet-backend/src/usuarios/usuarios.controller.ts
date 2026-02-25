@@ -1,17 +1,16 @@
 /* Controlador de Usuario para NestJS */
 // sgpet-backend/src/usuarios/usuarios.controller.ts:
-
-import {
-    Body, Controller, Delete, Get,
-    Param,
-    Patch,
-    Post,
-    ParseIntPipe,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, ParseIntPipe, } from '@nestjs/common';
 import { UsuariosService } from './usuarios.service';
 import { CreateUsuarioDto } from './create-usuario.dto';
 import { UpdateUsuarioDto } from './update-usuario.dto';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Roles } from '../auth/roles.decorator';
+import { RolesGuard } from '../auth/roles.guard';
 
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('ADMIN')
 @Controller('usuarios')
 export class UsuariosController {
     constructor(private readonly usuariosService: UsuariosService) { }

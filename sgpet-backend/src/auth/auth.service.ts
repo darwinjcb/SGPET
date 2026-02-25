@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ServicioPrismaService } from '../prisma.service';
 import { LoginDto } from './login.dto';
+import { ConflictException, ForbiddenException } from '@nestjs/common';
 
 @Injectable()
 export class AuthService {

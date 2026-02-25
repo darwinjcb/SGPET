@@ -272,9 +272,9 @@ export type PrestamoWhereInput = {
   equipoId?: Prisma.IntFilter<"Prestamo"> | number
   createdAt?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
-  usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
-  equipo?: Prisma.XOR<Prisma.EquipoScalarRelationFilter, Prisma.EquipoWhereInput>
   devolucion?: Prisma.XOR<Prisma.DevolucionNullableScalarRelationFilter, Prisma.DevolucionWhereInput> | null
+  equipo?: Prisma.XOR<Prisma.EquipoScalarRelationFilter, Prisma.EquipoWhereInput>
+  usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
 }
 
 export type PrestamoOrderByWithRelationInput = {
@@ -289,9 +289,9 @@ export type PrestamoOrderByWithRelationInput = {
   equipoId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  usuario?: Prisma.UsuarioOrderByWithRelationInput
-  equipo?: Prisma.EquipoOrderByWithRelationInput
   devolucion?: Prisma.DevolucionOrderByWithRelationInput
+  equipo?: Prisma.EquipoOrderByWithRelationInput
+  usuario?: Prisma.UsuarioOrderByWithRelationInput
 }
 
 export type PrestamoWhereUniqueInput = Prisma.AtLeast<{
@@ -309,9 +309,9 @@ export type PrestamoWhereUniqueInput = Prisma.AtLeast<{
   equipoId?: Prisma.IntFilter<"Prestamo"> | number
   createdAt?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Prestamo"> | Date | string
-  usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
-  equipo?: Prisma.XOR<Prisma.EquipoScalarRelationFilter, Prisma.EquipoWhereInput>
   devolucion?: Prisma.XOR<Prisma.DevolucionNullableScalarRelationFilter, Prisma.DevolucionWhereInput> | null
+  equipo?: Prisma.XOR<Prisma.EquipoScalarRelationFilter, Prisma.EquipoWhereInput>
+  usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
 }, "id">
 
 export type PrestamoOrderByWithAggregationInput = {
@@ -359,9 +359,9 @@ export type PrestamoCreateInput = {
   observacion?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  usuario: Prisma.UsuarioCreateNestedOneWithoutPrestamosInput
-  equipo: Prisma.EquipoCreateNestedOneWithoutPrestamosInput
   devolucion?: Prisma.DevolucionCreateNestedOneWithoutPrestamoInput
+  equipo: Prisma.EquipoCreateNestedOneWithoutPrestamosInput
+  usuario: Prisma.UsuarioCreateNestedOneWithoutPrestamosInput
 }
 
 export type PrestamoUncheckedCreateInput = {
@@ -388,9 +388,9 @@ export type PrestamoUpdateInput = {
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutPrestamosNestedInput
-  equipo?: Prisma.EquipoUpdateOneRequiredWithoutPrestamosNestedInput
   devolucion?: Prisma.DevolucionUpdateOneWithoutPrestamoNestedInput
+  equipo?: Prisma.EquipoUpdateOneRequiredWithoutPrestamosNestedInput
+  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutPrestamosNestedInput
 }
 
 export type PrestamoUncheckedUpdateInput = {
@@ -631,8 +631,8 @@ export type PrestamoCreateWithoutUsuarioInput = {
   observacion?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  equipo: Prisma.EquipoCreateNestedOneWithoutPrestamosInput
   devolucion?: Prisma.DevolucionCreateNestedOneWithoutPrestamoInput
+  equipo: Prisma.EquipoCreateNestedOneWithoutPrestamosInput
 }
 
 export type PrestamoUncheckedCreateWithoutUsuarioInput = {
@@ -701,8 +701,8 @@ export type PrestamoCreateWithoutEquipoInput = {
   observacion?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  usuario: Prisma.UsuarioCreateNestedOneWithoutPrestamosInput
   devolucion?: Prisma.DevolucionCreateNestedOneWithoutPrestamoInput
+  usuario: Prisma.UsuarioCreateNestedOneWithoutPrestamosInput
 }
 
 export type PrestamoUncheckedCreateWithoutEquipoInput = {
@@ -754,8 +754,8 @@ export type PrestamoCreateWithoutDevolucionInput = {
   observacion?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  usuario: Prisma.UsuarioCreateNestedOneWithoutPrestamosInput
   equipo: Prisma.EquipoCreateNestedOneWithoutPrestamosInput
+  usuario: Prisma.UsuarioCreateNestedOneWithoutPrestamosInput
 }
 
 export type PrestamoUncheckedCreateWithoutDevolucionInput = {
@@ -797,8 +797,8 @@ export type PrestamoUpdateWithoutDevolucionInput = {
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutPrestamosNestedInput
   equipo?: Prisma.EquipoUpdateOneRequiredWithoutPrestamosNestedInput
+  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutPrestamosNestedInput
 }
 
 export type PrestamoUncheckedUpdateWithoutDevolucionInput = {
@@ -837,8 +837,8 @@ export type PrestamoUpdateWithoutUsuarioInput = {
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  equipo?: Prisma.EquipoUpdateOneRequiredWithoutPrestamosNestedInput
   devolucion?: Prisma.DevolucionUpdateOneWithoutPrestamoNestedInput
+  equipo?: Prisma.EquipoUpdateOneRequiredWithoutPrestamosNestedInput
 }
 
 export type PrestamoUncheckedUpdateWithoutUsuarioInput = {
@@ -890,8 +890,8 @@ export type PrestamoUpdateWithoutEquipoInput = {
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutPrestamosNestedInput
   devolucion?: Prisma.DevolucionUpdateOneWithoutPrestamoNestedInput
+  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutPrestamosNestedInput
 }
 
 export type PrestamoUncheckedUpdateWithoutEquipoInput = {
@@ -935,9 +935,9 @@ export type PrestamoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   equipoId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
-  equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
   devolucion?: boolean | Prisma.Prestamo$devolucionArgs<ExtArgs>
+  equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
+  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prestamo"]>
 
 export type PrestamoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -952,8 +952,8 @@ export type PrestamoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   equipoId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
+  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prestamo"]>
 
 export type PrestamoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -968,8 +968,8 @@ export type PrestamoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   equipoId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
+  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prestamo"]>
 
 export type PrestamoSelectScalar = {
@@ -988,25 +988,25 @@ export type PrestamoSelectScalar = {
 
 export type PrestamoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "estado" | "fechaSolicitud" | "fechaAprobacion" | "fechaEntrega" | "fechaDevolucion" | "observacion" | "usuarioId" | "equipoId" | "createdAt" | "updatedAt", ExtArgs["result"]["prestamo"]>
 export type PrestamoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
-  equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
   devolucion?: boolean | Prisma.Prestamo$devolucionArgs<ExtArgs>
+  equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
+  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }
 export type PrestamoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
+  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }
 export type PrestamoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
   equipo?: boolean | Prisma.EquipoDefaultArgs<ExtArgs>
+  usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
 }
 
 export type $PrestamoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Prestamo"
   objects: {
-    usuario: Prisma.$UsuarioPayload<ExtArgs>
-    equipo: Prisma.$EquipoPayload<ExtArgs>
     devolucion: Prisma.$DevolucionPayload<ExtArgs> | null
+    equipo: Prisma.$EquipoPayload<ExtArgs>
+    usuario: Prisma.$UsuarioPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1414,9 +1414,9 @@ readonly fields: PrestamoFieldRefs;
  */
 export interface Prisma__PrestamoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  usuario<T extends Prisma.UsuarioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsuarioDefaultArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  equipo<T extends Prisma.EquipoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EquipoDefaultArgs<ExtArgs>>): Prisma.Prisma__EquipoClient<runtime.Types.Result.GetResult<Prisma.$EquipoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   devolucion<T extends Prisma.Prestamo$devolucionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Prestamo$devolucionArgs<ExtArgs>>): Prisma.Prisma__DevolucionClient<runtime.Types.Result.GetResult<Prisma.$DevolucionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  equipo<T extends Prisma.EquipoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EquipoDefaultArgs<ExtArgs>>): Prisma.Prisma__EquipoClient<runtime.Types.Result.GetResult<Prisma.$EquipoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  usuario<T extends Prisma.UsuarioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsuarioDefaultArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
