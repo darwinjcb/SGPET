@@ -226,6 +226,23 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
 }
 
+export type EnumEstadoDevolucionFilter<$PrismaModel = never> = {
+  equals?: $Enums.EstadoDevolucion | Prisma.EnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  in?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEstadoDevolucionFilter<$PrismaModel> | $Enums.EstadoDevolucion
+}
+
+export type EnumEstadoDevolucionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.EstadoDevolucion | Prisma.EnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  in?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEstadoDevolucionWithAggregatesFilter<$PrismaModel> | $Enums.EstadoDevolucion
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEstadoDevolucionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEstadoDevolucionFilter<$PrismaModel>
+}
+
 export type NestedIntFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel>
   in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
@@ -449,6 +466,23 @@ export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumEstadoDevolucionFilter<$PrismaModel = never> = {
+  equals?: $Enums.EstadoDevolucion | Prisma.EnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  in?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEstadoDevolucionFilter<$PrismaModel> | $Enums.EstadoDevolucion
+}
+
+export type NestedEnumEstadoDevolucionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.EstadoDevolucion | Prisma.EnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  in?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EstadoDevolucion[] | Prisma.ListEnumEstadoDevolucionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEstadoDevolucionWithAggregatesFilter<$PrismaModel> | $Enums.EstadoDevolucion
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEstadoDevolucionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEstadoDevolucionFilter<$PrismaModel>
 }
 
 

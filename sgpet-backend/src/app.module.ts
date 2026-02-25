@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { EquiposModule } from './equipos/equipos.module';
 import { PrestamosModule } from './prestamos/prestamos.module';
+import { DevolucionesModule } from './devoluciones/devoluciones.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { PrestamosModule } from './prestamos/prestamos.module';
     CategoriasModule,
     EquiposModule,
     PrestamosModule,
+    DevolucionesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

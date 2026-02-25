@@ -1,3 +1,4 @@
+// sgpet-backend/prisma/schema.prisma:
 generator client {
   provider     = "prisma-client"
   output       = "../src/generated/prisma"
@@ -71,13 +72,13 @@ model Prestamo {
 }
 
 model Devolucion {
-  id                     Int          @id @default(autoincrement())
-  fecha                  DateTime     @default(now())
+  id                     Int              @id @default(autoincrement())
+  fecha                  DateTime         @default(now())
   observacion            String?
-  estadoEquipoAlDevolver EstadoEquipo @default(DISPONIBLE)
-  prestamoId             Int          @unique
-  createdAt              DateTime     @default(now())
-  prestamo               Prestamo     @relation(fields: [prestamoId], references: [id])
+  estadoEquipoAlDevolver EstadoDevolucion @default(BUENO)
+  prestamoId             Int              @unique
+  createdAt              DateTime         @default(now())
+  prestamo               Prestamo         @relation(fields: [prestamoId], references: [id])
 }
 
 /// Esquema de Prisma
@@ -99,4 +100,10 @@ enum EstadoPrestamo {
   RECHAZADO
   DEVUELTO
   VENCIDO
+}
+
+enum EstadoDevolucion {
+  BUENO
+  CON_DANOS
+  NO_FUNCIONAL
 }

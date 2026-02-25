@@ -1010,6 +1010,20 @@ export type ListEnumEstadoPrestamoFieldRefInput<$PrismaModel> = FieldRefInputTyp
 
 
 /**
+ * Reference to a field of type 'EstadoDevolucion'
+ */
+export type EnumEstadoDevolucionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EstadoDevolucion'>
+    
+
+
+/**
+ * Reference to a field of type 'EstadoDevolucion[]'
+ */
+export type ListEnumEstadoDevolucionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EstadoDevolucion[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>

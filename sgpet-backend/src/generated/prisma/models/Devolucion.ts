@@ -40,7 +40,7 @@ export type DevolucionMinAggregateOutputType = {
   id: number | null
   fecha: Date | null
   observacion: string | null
-  estadoEquipoAlDevolver: $Enums.EstadoEquipo | null
+  estadoEquipoAlDevolver: $Enums.EstadoDevolucion | null
   prestamoId: number | null
   createdAt: Date | null
 }
@@ -49,7 +49,7 @@ export type DevolucionMaxAggregateOutputType = {
   id: number | null
   fecha: Date | null
   observacion: string | null
-  estadoEquipoAlDevolver: $Enums.EstadoEquipo | null
+  estadoEquipoAlDevolver: $Enums.EstadoDevolucion | null
   prestamoId: number | null
   createdAt: Date | null
 }
@@ -193,7 +193,7 @@ export type DevolucionGroupByOutputType = {
   id: number
   fecha: Date
   observacion: string | null
-  estadoEquipoAlDevolver: $Enums.EstadoEquipo
+  estadoEquipoAlDevolver: $Enums.EstadoDevolucion
   prestamoId: number
   createdAt: Date
   _count: DevolucionCountAggregateOutputType | null
@@ -225,7 +225,7 @@ export type DevolucionWhereInput = {
   id?: Prisma.IntFilter<"Devolucion"> | number
   fecha?: Prisma.DateTimeFilter<"Devolucion"> | Date | string
   observacion?: Prisma.StringNullableFilter<"Devolucion"> | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFilter<"Devolucion"> | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFilter<"Devolucion"> | $Enums.EstadoDevolucion
   prestamoId?: Prisma.IntFilter<"Devolucion"> | number
   createdAt?: Prisma.DateTimeFilter<"Devolucion"> | Date | string
   prestamo?: Prisma.XOR<Prisma.PrestamoScalarRelationFilter, Prisma.PrestamoWhereInput>
@@ -249,7 +249,7 @@ export type DevolucionWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.DevolucionWhereInput | Prisma.DevolucionWhereInput[]
   fecha?: Prisma.DateTimeFilter<"Devolucion"> | Date | string
   observacion?: Prisma.StringNullableFilter<"Devolucion"> | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFilter<"Devolucion"> | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFilter<"Devolucion"> | $Enums.EstadoDevolucion
   createdAt?: Prisma.DateTimeFilter<"Devolucion"> | Date | string
   prestamo?: Prisma.XOR<Prisma.PrestamoScalarRelationFilter, Prisma.PrestamoWhereInput>
 }, "id" | "prestamoId">
@@ -275,7 +275,7 @@ export type DevolucionScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Devolucion"> | number
   fecha?: Prisma.DateTimeWithAggregatesFilter<"Devolucion"> | Date | string
   observacion?: Prisma.StringNullableWithAggregatesFilter<"Devolucion"> | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoWithAggregatesFilter<"Devolucion"> | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionWithAggregatesFilter<"Devolucion"> | $Enums.EstadoDevolucion
   prestamoId?: Prisma.IntWithAggregatesFilter<"Devolucion"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Devolucion"> | Date | string
 }
@@ -283,7 +283,7 @@ export type DevolucionScalarWhereWithAggregatesInput = {
 export type DevolucionCreateInput = {
   fecha?: Date | string
   observacion?: string | null
-  estadoEquipoAlDevolver?: $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: $Enums.EstadoDevolucion
   createdAt?: Date | string
   prestamo: Prisma.PrestamoCreateNestedOneWithoutDevolucionInput
 }
@@ -292,7 +292,7 @@ export type DevolucionUncheckedCreateInput = {
   id?: number
   fecha?: Date | string
   observacion?: string | null
-  estadoEquipoAlDevolver?: $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: $Enums.EstadoDevolucion
   prestamoId: number
   createdAt?: Date | string
 }
@@ -300,7 +300,7 @@ export type DevolucionUncheckedCreateInput = {
 export type DevolucionUpdateInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFieldUpdateOperationsInput | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFieldUpdateOperationsInput | $Enums.EstadoDevolucion
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prestamo?: Prisma.PrestamoUpdateOneRequiredWithoutDevolucionNestedInput
 }
@@ -309,7 +309,7 @@ export type DevolucionUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFieldUpdateOperationsInput | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFieldUpdateOperationsInput | $Enums.EstadoDevolucion
   prestamoId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -318,7 +318,7 @@ export type DevolucionCreateManyInput = {
   id?: number
   fecha?: Date | string
   observacion?: string | null
-  estadoEquipoAlDevolver?: $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: $Enums.EstadoDevolucion
   prestamoId: number
   createdAt?: Date | string
 }
@@ -326,7 +326,7 @@ export type DevolucionCreateManyInput = {
 export type DevolucionUpdateManyMutationInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFieldUpdateOperationsInput | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFieldUpdateOperationsInput | $Enums.EstadoDevolucion
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -334,7 +334,7 @@ export type DevolucionUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFieldUpdateOperationsInput | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFieldUpdateOperationsInput | $Enums.EstadoDevolucion
   prestamoId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -413,10 +413,14 @@ export type DevolucionUncheckedUpdateOneWithoutPrestamoNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DevolucionUpdateToOneWithWhereWithoutPrestamoInput, Prisma.DevolucionUpdateWithoutPrestamoInput>, Prisma.DevolucionUncheckedUpdateWithoutPrestamoInput>
 }
 
+export type EnumEstadoDevolucionFieldUpdateOperationsInput = {
+  set?: $Enums.EstadoDevolucion
+}
+
 export type DevolucionCreateWithoutPrestamoInput = {
   fecha?: Date | string
   observacion?: string | null
-  estadoEquipoAlDevolver?: $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: $Enums.EstadoDevolucion
   createdAt?: Date | string
 }
 
@@ -424,7 +428,7 @@ export type DevolucionUncheckedCreateWithoutPrestamoInput = {
   id?: number
   fecha?: Date | string
   observacion?: string | null
-  estadoEquipoAlDevolver?: $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: $Enums.EstadoDevolucion
   createdAt?: Date | string
 }
 
@@ -447,7 +451,7 @@ export type DevolucionUpdateToOneWithWhereWithoutPrestamoInput = {
 export type DevolucionUpdateWithoutPrestamoInput = {
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFieldUpdateOperationsInput | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFieldUpdateOperationsInput | $Enums.EstadoDevolucion
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -455,7 +459,7 @@ export type DevolucionUncheckedUpdateWithoutPrestamoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   observacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  estadoEquipoAlDevolver?: Prisma.EnumEstadoEquipoFieldUpdateOperationsInput | $Enums.EstadoEquipo
+  estadoEquipoAlDevolver?: Prisma.EnumEstadoDevolucionFieldUpdateOperationsInput | $Enums.EstadoDevolucion
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -520,7 +524,7 @@ export type $DevolucionPayload<ExtArgs extends runtime.Types.Extensions.Internal
     id: number
     fecha: Date
     observacion: string | null
-    estadoEquipoAlDevolver: $Enums.EstadoEquipo
+    estadoEquipoAlDevolver: $Enums.EstadoDevolucion
     prestamoId: number
     createdAt: Date
   }, ExtArgs["result"]["devolucion"]>
@@ -950,7 +954,7 @@ export interface DevolucionFieldRefs {
   readonly id: Prisma.FieldRef<"Devolucion", 'Int'>
   readonly fecha: Prisma.FieldRef<"Devolucion", 'DateTime'>
   readonly observacion: Prisma.FieldRef<"Devolucion", 'String'>
-  readonly estadoEquipoAlDevolver: Prisma.FieldRef<"Devolucion", 'EstadoEquipo'>
+  readonly estadoEquipoAlDevolver: Prisma.FieldRef<"Devolucion", 'EstadoDevolucion'>
   readonly prestamoId: Prisma.FieldRef<"Devolucion", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Devolucion", 'DateTime'>
 }

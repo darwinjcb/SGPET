@@ -36,3 +36,12 @@ export const EstadoPrestamo = {
 } as const
 
 export type EstadoPrestamo = (typeof EstadoPrestamo)[keyof typeof EstadoPrestamo]
+
+
+export const EstadoDevolucion = {
+  BUENO: 'BUENO',
+  CON_DANOS: 'CON_DANOS',
+  NO_FUNCIONAL: 'NO_FUNCIONAL'
+} as const
+
+export type EstadoDevolucion = (typeof EstadoDevolucion)[keyof typeof EstadoDevolucion]
