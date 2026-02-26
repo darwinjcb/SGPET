@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../paginas/Login";
 import NoAutorizado from "../paginas/NoAutorizado";
 import RutaProtegida from "./RutaProtegida";
-
 import AdminPrestamos from "../paginas/AdminPrestamos";
 import EquiposDisponibles from "../paginas/EquiposDisponibles";
 

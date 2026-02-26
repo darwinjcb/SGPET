@@ -14,7 +14,7 @@ export default function AdminPrestamos() {
     try {
       const { data } = await api.get("/prestamos");
       setPrestamos(data);
-    } catch (e) {
+    } catch {
       setError("No fue posible cargar los préstamos.");
     } finally {
       setLoading(false);
@@ -24,7 +24,7 @@ export default function AdminPrestamos() {
   async function aprobar(id) {
     if (!confirm("¿Aprobar este préstamo?")) return;
     try {
-      await api.patch(`/prestamos/${id}/aprobar`);
+      await api.patch(`/prestamos/${id}/aprobar`, {}); // ✅ por DTO
       await cargar();
     } catch {
       alert("No se pudo aprobar.");
@@ -34,7 +34,7 @@ export default function AdminPrestamos() {
   async function rechazar(id) {
     if (!confirm("¿Rechazar este préstamo?")) return;
     try {
-      await api.patch(`/prestamos/${id}/rechazar`);
+      await api.patch(`/prestamos/${id}/rechazar`, {}); // ✅ por DTO
       await cargar();
     } catch {
       alert("No se pudo rechazar.");
@@ -52,8 +52,17 @@ export default function AdminPrestamos() {
       <div style={styles.container}>
         <div style={styles.top}>
           <h2 style={styles.h2}>Préstamos</h2>
-          <button style={styles.refresh} onClick={cargar}>
-            ACTUALIZAR
+
+          <button
+            style={{
+              ...styles.refresh,
+              opacity: loading ? 0.7 : 1,
+              cursor: loading ? "not-allowed" : "pointer",
+            }}
+            onClick={cargar}
+            disabled={loading}
+          >
+            {loading ? "CARGANDO..." : "ACTUALIZAR"}
           </button>
         </div>
 
@@ -65,57 +74,59 @@ export default function AdminPrestamos() {
             <table style={styles.table}>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Usuario</th>
-                  <th>Equipo</th>
-                  <th>Estado</th>
-                  <th>Fecha Préstamo</th>
-                  <th>Fecha Devolución</th>
-                  <th>Acciones</th>
+                  <th style={styles.th}>ID</th>
+                  <th style={styles.th}>Usuario</th>
+                  <th style={styles.th}>Equipo</th>
+                  <th style={styles.th}>Estado</th>
+                  <th style={styles.th}>Fecha Préstamo</th>
+                  <th style={styles.th}>Fecha Devolución</th>
+                  <th style={styles.th}>Acciones</th>
                 </tr>
               </thead>
 
               <tbody>
                 {prestamos.map((p) => (
-                  <tr key={p.id}>
-                    <td>{p.id}</td>
+                  <tr key={p.id} style={styles.tr}>
+                    <td style={styles.td}>{p.id}</td>
 
-                    <td>
+                    <td style={styles.td}>
                       {p.usuario
                         ? `${p.usuario.nombres} ${p.usuario.apellidos}`
                         : "—"}
                       <div style={styles.small}>{p.usuario?.email ?? ""}</div>
                     </td>
 
-                    <td>
+                    <td style={styles.td}>
                       {p.equipo ? p.equipo.nombre : "—"}
                       <div style={styles.small}>{p.equipo?.codigo ?? ""}</div>
                     </td>
 
-                    <td>
+                    <td style={styles.td}>
                       <span style={pill(p.estado)}>{p.estado}</span>
                     </td>
 
-                    <td>{formatFecha(p.fechaPrestamo)}</td>
-                    <td>{formatFecha(p.fechaDevolucion)}</td>
+                    <td style={styles.td}>{formatFecha(p.fechaPrestamo)}</td>
+                    <td style={styles.td}>{formatFecha(p.fechaDevolucion)}</td>
 
-                    <td style={{ whiteSpace: "nowrap" }}>
-                      <button
-                        style={styles.btnOk}
-                        onClick={() => aprobar(p.id)}
-                        disabled={p.estado !== "PENDIENTE"}
-                        title="Solo PENDIENTE"
-                      >
-                        APROBAR
-                      </button>
-                      <button
-                        style={styles.btnBad}
-                        onClick={() => rechazar(p.id)}
-                        disabled={p.estado !== "PENDIENTE"}
-                        title="Solo PENDIENTE"
-                      >
-                        RECHAZAR
-                      </button>
+                    <td style={{ ...styles.td, whiteSpace: "nowrap" }}>
+                      {p.estado === "PENDIENTE" ? (
+                        <>
+                          <button
+                            style={styles.btnOk}
+                            onClick={() => aprobar(p.id)}
+                          >
+                            APROBAR
+                          </button>
+                          <button
+                            style={styles.btnBad}
+                            onClick={() => rechazar(p.id)}
+                          >
+                            RECHAZAR
+                          </button>
+                        </>
+                      ) : (
+                        <span style={styles.sinAcciones}>Sin acciones</span>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -138,7 +149,6 @@ export default function AdminPrestamos() {
 
 function formatFecha(v) {
   if (!v) return "—";
-  // puede venir como string ISO
   const d = new Date(v);
   if (isNaN(d.getTime())) return String(v);
   return d.toLocaleString();
@@ -167,8 +177,23 @@ const styles = {
     overflow: "hidden",
   },
   table: { width: "100%", borderCollapse: "collapse" },
+  th: {
+    textAlign: "left",
+    fontSize: 12,
+    letterSpacing: 0.4,
+    padding: "12px 12px",
+    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    color: "rgba(231,236,243,0.8)",
+  },
+  td: {
+    padding: "12px 12px",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+    verticalAlign: "top",
+  },
+  tr: {},
   small: { fontSize: 12, color: "rgba(231,236,243,0.6)", marginTop: 2 },
   empty: { padding: 18, textAlign: "center" },
+
   btnOk: {
     padding: "8px 10px",
     borderRadius: 10,
@@ -188,6 +213,10 @@ const styles = {
     fontWeight: 800,
     cursor: "pointer",
   },
+  sinAcciones: {
+    fontSize: 12,
+    color: "rgba(231,236,243,0.6)",
+  },
   refresh: {
     padding: "10px 12px",
     borderRadius: 10,
@@ -195,7 +224,6 @@ const styles = {
     background: "rgba(11,18,32,0.55)",
     color: "white",
     fontWeight: 800,
-    cursor: "pointer",
   },
 };
 

@@ -6,15 +6,20 @@ import Encabezado from "../componentes/Encabezado";
 export default function EquiposDisponibles() {
   const [equipos, setEquipos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [submittingId, setSubmittingId] = useState(null);
   const [error, setError] = useState("");
+  const [mensaje, setMensaje] = useState("");
   const [fechaDevolucion, setFechaDevolucion] = useState("");
 
   async function cargar() {
     setLoading(true);
     setError("");
+    setMensaje("");
     try {
       const { data } = await api.get("/reportes/equipos-disponibles");
       setEquipos(data);
+      setMensaje("Lista actualizada.");
+      window.setTimeout(() => setMensaje(""), 1500);
     } catch {
       setError("No se pudieron cargar los equipos disponibles.");
     } finally {
@@ -28,16 +33,22 @@ export default function EquiposDisponibles() {
       return;
     }
 
+    const idNum = Number(equipoId);
+    setSubmittingId(idNum);
+
     try {
       await api.post("/prestamos/solicitar", {
-        equipoId,
-        fechaDevolucion,
+        equipoId: idNum,
+        fechaDevolucion: new Date(fechaDevolucion).toISOString(),
       });
+
       alert("Solicitud enviada. Espera aprobación del administrador.");
       setFechaDevolucion("");
       await cargar();
-    } catch (e) {
+    } catch {
       alert("No se pudo solicitar el préstamo.");
+    } finally {
+      setSubmittingId(null);
     }
   }
 
@@ -52,8 +63,17 @@ export default function EquiposDisponibles() {
       <div style={styles.container}>
         <div style={styles.top}>
           <h2 style={styles.h2}>Equipos Disponibles</h2>
-          <button style={styles.refresh} onClick={cargar}>
-            ACTUALIZAR
+
+          <button
+            style={{
+              ...styles.refresh,
+              opacity: loading ? 0.7 : 1,
+              cursor: loading ? "not-allowed" : "pointer",
+            }}
+            onClick={cargar}
+            disabled={loading}
+          >
+            {loading ? "CARGANDO..." : "ACTUALIZAR"}
           </button>
         </div>
 
@@ -67,25 +87,40 @@ export default function EquiposDisponibles() {
           />
         </div>
 
+        {mensaje && <p style={styles.muted}>{mensaje}</p>}
         {loading && <p style={styles.muted}>Cargando...</p>}
         {error && <div style={styles.error}>{error}</div>}
 
         {!loading && !error && (
           <div style={styles.grid}>
-            {equipos.map((eq) => (
-              <div key={eq.id} style={styles.card}>
-                <div style={styles.nombre}>{eq.nombre}</div>
-                <div style={styles.small}>{eq.codigo}</div>
-                <div style={styles.small}>
-                  Categoría: {eq.categoria?.nombre ?? "—"}
-                </div>
-                <div style={styles.small}>Estado: {eq.estado}</div>
+            {equipos.map((eq) => {
+              const enviando = submittingId === eq.id;
+              const sinFecha = !fechaDevolucion;
 
-                <button style={styles.btnOk} onClick={() => solicitar(eq.id)}>
-                  SOLICITAR PRÉSTAMO
-                </button>
-              </div>
-            ))}
+              return (
+                <div key={eq.id} style={styles.card}>
+                  <div style={styles.nombre}>{eq.nombre}</div>
+                  <div style={styles.small}>{eq.codigo}</div>
+                  <div style={styles.small}>
+                    Categoría: {eq.categoria?.nombre ?? "—"}
+                  </div>
+                  <div style={styles.small}>Estado: {eq.estado}</div>
+
+                  <button
+                    style={{
+                      ...styles.btnOk,
+                      opacity: enviando || sinFecha ? 0.7 : 1,
+                      cursor: enviando || sinFecha ? "not-allowed" : "pointer",
+                    }}
+                    onClick={() => solicitar(eq.id)}
+                    disabled={enviando || sinFecha}
+                    title={sinFecha ? "Selecciona una fecha de devolución" : ""}
+                  >
+                    {enviando ? "ENVIANDO..." : "SOLICITAR PRÉSTAMO"}
+                  </button>
+                </div>
+              );
+            })}
 
             {equipos.length === 0 && (
               <div style={styles.muted}>No hay equipos disponibles.</div>
@@ -135,7 +170,6 @@ const styles = {
     background: "rgba(11,18,32,0.55)",
     color: "white",
     fontWeight: 800,
-    cursor: "pointer",
   },
   grid: {
     display: "grid",
@@ -159,6 +193,5 @@ const styles = {
     background: "rgba(47,111,235,0.25)",
     color: "white",
     fontWeight: 900,
-    cursor: "pointer",
   },
 };
