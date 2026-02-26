@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/axios";
 import Encabezado from "../componentes/Encabezado";
+import Menu from "../componentes/Menu";
 
 export default function EquiposDisponibles() {
   const [equipos, setEquipos] = useState([]);
@@ -59,7 +60,7 @@ export default function EquiposDisponibles() {
   return (
     <div>
       <Encabezado />
-
+      <Menu /> {/* */}
       <div style={styles.container}>
         <div style={styles.top}>
           <h2 style={styles.h2}>Equipos Disponibles</h2>

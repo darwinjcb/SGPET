@@ -1,12 +1,14 @@
 // sgpet-frontend/src/rutas/AppRutas.jsx:
+// sgpet-frontend/src/rutas/AppRutas.jsx:
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../paginas/Login";
 import NoAutorizado from "../paginas/NoAutorizado";
 import RutaProtegida from "./RutaProtegida";
-import AdminPrestamos from "../paginas/AdminPrestamos";
 import EquiposDisponibles from "../paginas/EquiposDisponibles";
 import HistorialPrestamos from "../paginas/HistorialPrestamos";
 import AdminDevoluciones from "../paginas/AdminDevoluciones";
+import AdminPrestamos from "../paginas/AdminPrestamos";
+import AdminReportes from "../paginas/AdminReportes";
 
 export default function AppRutas() {
   return (
@@ -31,6 +33,16 @@ export default function AppRutas() {
           element={
             <RutaProtegida roles={["ADMIN"]}>
               <AdminDevoluciones />
+            </RutaProtegida>
+          }
+        />
+
+        {/* ✅ NUEVA RUTA: ADMIN REPORTES */}
+        <Route
+          path="/admin/reportes"
+          element={
+            <RutaProtegida roles={["ADMIN"]}>
+              <AdminReportes />
             </RutaProtegida>
           }
         />

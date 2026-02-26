@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Encabezado from "../componentes/Encabezado";
 import { api } from "../api/axios";
+import Menu from "../componentes/Menu";
 
 const ESTADOS = ["BUENO", "CON_DANOS", "NO_FUNCIONAL"];
 
@@ -68,7 +69,7 @@ export default function AdminDevoluciones() {
   return (
     <div>
       <Encabezado />
-
+      <Menu /> {/* */}
       <div style={{ padding: 18, maxWidth: 1000, margin: "0 auto" }}>
         <div style={styles.top}>
           <h2 style={{ margin: 0 }}>Registrar Devolución</h2>
@@ -136,7 +137,7 @@ export default function AdminDevoluciones() {
               value={observacion}
               onChange={(e) => setObservacion(e.target.value)}
               style={{ ...styles.input, minHeight: 90, resize: "vertical" }}
-              placeholder="Ej: equipo con rayones leves..."
+              placeholder="Ej: Equipo con rayones leves..."
             />
 
             <button type="submit" style={styles.btnPrimary}>
@@ -144,8 +145,8 @@ export default function AdminDevoluciones() {
             </button>
 
             <div style={styles.note}>
-              BUENO → equipo vuelve DISPONIBLE • CON_DANOS/NO_FUNCIONAL → pasa a
-              MANTENIMIENTO
+              BUENO → El equipo se vuelve DISPONIBLE • CON DAÑOS/NO FUNCIONAL →
+              pasa a MANTENIMIENTO
             </div>
           </form>
         </div>

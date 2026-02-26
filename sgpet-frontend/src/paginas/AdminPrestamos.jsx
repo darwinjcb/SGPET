@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/axios";
 import Encabezado from "../componentes/Encabezado";
+import Menu from "../componentes/Menu";
 
 export default function AdminPrestamos() {
   const [prestamos, setPrestamos] = useState([]);
@@ -48,7 +49,7 @@ export default function AdminPrestamos() {
   return (
     <div>
       <Encabezado />
-
+      <Menu /> {/* */}
       <div style={styles.container}>
         <div style={styles.top}>
           <h2 style={styles.h2}>Préstamos</h2>
@@ -134,7 +135,7 @@ export default function AdminPrestamos() {
                 {prestamos.length === 0 && (
                   <tr>
                     <td colSpan="7" style={styles.empty}>
-                      No hay préstamos.
+                      No se encontraron préstamos.
                     </td>
                   </tr>
                 )}

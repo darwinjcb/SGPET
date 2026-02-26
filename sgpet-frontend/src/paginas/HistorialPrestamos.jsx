@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api/axios";
 import Encabezado from "../componentes/Encabezado";
+import Menu from "../componentes/Menu";
 
 export default function HistorialPrestamos() {
   const [prestamos, setPrestamos] = useState([]);
@@ -28,6 +29,7 @@ export default function HistorialPrestamos() {
   return (
     <div>
       <Encabezado />
+      <Menu /> {/* */}
       <div style={{ padding: 18, maxWidth: 1200, margin: "0 auto" }}>
         <h2 style={{ marginBottom: 12 }}>Mi Historial de Préstamos</h2>
 
