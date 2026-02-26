@@ -1,11 +1,12 @@
 // sgpet-frontend/src/rutas/AppRutas.jsx:
-// sgpet-frontend/src/rutas/AppRutas.jsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "../paginas/Login";
 import NoAutorizado from "../paginas/NoAutorizado";
 import RutaProtegida from "./RutaProtegida";
 import AdminPrestamos from "../paginas/AdminPrestamos";
 import EquiposDisponibles from "../paginas/EquiposDisponibles";
+import HistorialPrestamos from "../paginas/HistorialPrestamos";
+import AdminDevoluciones from "../paginas/AdminDevoluciones";
 
 export default function AppRutas() {
   return (
@@ -14,6 +15,7 @@ export default function AppRutas() {
         <Route path="/login" element={<Login />} />
         <Route path="/no-autorizado" element={<NoAutorizado />} />
 
+        {/* ✅ Panel principal ADMIN */}
         <Route
           path="/admin"
           element={
@@ -23,11 +25,32 @@ export default function AppRutas() {
           }
         />
 
+        {/* ✅ NUEVA RUTA: ADMIN DEVOLUCIONES */}
+        <Route
+          path="/admin/devoluciones"
+          element={
+            <RutaProtegida roles={["ADMIN"]}>
+              <AdminDevoluciones />
+            </RutaProtegida>
+          }
+        />
+
+        {/* ✅ Usuarios DOCENTE y ESTUDIANTE */}
         <Route
           path="/app"
           element={
             <RutaProtegida roles={["DOCENTE", "ESTUDIANTE"]}>
               <EquiposDisponibles />
+            </RutaProtegida>
+          }
+        />
+
+        {/* ✅ Historial */}
+        <Route
+          path="/historial"
+          element={
+            <RutaProtegida roles={["DOCENTE", "ESTUDIANTE"]}>
+              <HistorialPrestamos />
             </RutaProtegida>
           }
         />
